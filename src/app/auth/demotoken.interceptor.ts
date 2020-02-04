@@ -3,16 +3,16 @@ import { HttpInterceptor, HttpHandler, HttpRequest, HttpEvent, HttpResponse, Htt
 import { Observable, of } from "rxjs";
 import { tap, catchError } from "rxjs/operators";
 import { BlockUI, NgBlockUI } from 'ng-block-ui';
-import { ToastrService } from 'ngx-toastr';
+//import { ToastrService } from 'ngx-toastr';
 import { timer } from 'rxjs';
 
 @Injectable()
-export class TokenInterceptor implements HttpInterceptor {
+export class DemoTokenInterceptor implements HttpInterceptor {
     @BlockUI() blockUI: NgBlockUI;
     source = timer(2000);
     apiList= [];
     constructor(
-        private toastr: ToastrService
+        //private toastr: ToastrService
     ) {
         
     }
@@ -48,9 +48,9 @@ export class TokenInterceptor implements HttpInterceptor {
                 this.blockUI.stop();
                 if(err instanceof HttpErrorResponse) {
                     try {
-                        this.toastr.error(err.statusText, 'Error!');
+                        //this.toastr.error(err.statusText, 'Error!');
                     } catch(e) {
-                        this.toastr.error('An error occurred', 'Error!');
+                        //this.toastr.error('An error occurred', 'Error!');
                     }
                 }
                 return of(err);
